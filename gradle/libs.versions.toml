@@ -1,0 +1,125 @@
+[versions]
+# Android
+androidxCoreKtxVersion = "1.9.0"
+lifecycleRumtimeKtxVersion = "2.5.1"
+
+# Kotlinx
+kotlinxCoroutines = "1.6.4"
+
+# Android Compose
+composeVersion = "1.4.3"
+composeBomVersion = "2023.04.01"
+activityComposeVersion = "1.6.1"
+navigationComposeVersion = "2.5.3"
+hiltNavigationComposeVersion = "1.0.0"
+windowComposeVersion = "1.1.0"
+
+# Gradle plugins
+androidGradleVersion = "7.3.1"
+kotlinVersion = "1.7.20"
+
+# Testing
+junitVersion = "4.13.2"
+
+# Android Testing
+androidxTestExtVersion = "1.1.4"
+espressoVersion = "3.5.0"
+
+# Jacoco
+jacocoVersion = "0.8.8"
+
+# Firebase
+firebaseVersion = "4.3.13"
+firebaseBomVersion = "31.1.1"
+
+# Hilt
+hilt = "2.45"
+hiltExt = "1.0.0"
+
+# OkHttp
+okhttp3-version = "4.9.3"
+
+# Retrofit
+retrofit-version = "2.9.0"
+retrofitKotlinxSerializationJson = "0.8.0"
+
+# Moshi
+moshi-version = "1.13.0"
+moshi-converter-version = "2.9.0"
+
+# Retromock
+retromock-version = "1.1.1"
+
+# Coil
+coil-version = "2.3.0"
+
+[libraries]
+# Android
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCoreKtxVersion" }
+androidx-lifecycleRuntime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRumtimeKtxVersion" }
+
+# Android compose
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
+compose-activity = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
+compose-window = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "windowComposeVersion" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
+compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material = { module = "androidx.compose.material3:material3" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+
+# Gradle plugins
+android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradleVersion" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinVersion" }
+
+# Testing
+junit = { module = "junit:junit", version.ref = "junitVersion" }
+
+# Android Testing
+androidx-test-ext = { module = "androidx.test.ext:junit", version.ref = "androidxTestExtVersion" }
+androidx-test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }
+compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
+compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+
+# Firebase
+firebase = { module = "com.google.gms:google-services", version.ref = "firebaseVersion" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
+
+# Kotlinx
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+
+# Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+
+# Hilt Ext
+hilt-ext-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltExt" }
+hilt-ext-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltExt" }
+
+# Retrofit
+okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3-version" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit-version" }
+interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3-version" }
+moshi-converter = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "moshi-converter-version" }
+
+# Moshi
+moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi-version" }
+
+# Retromock
+retromock = { module = "co.infinum:retromock", version.ref = "retromock-version" }
+
+# Coil
+coil = { module = "io.coil-kt:coil-compose", version.ref = "coil-version" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-version" }
+coil-svg = { module = "io.coil-kt:coil-svg", version.ref = "coil-version"}
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradleVersion" }
+android-library = { id = "com.android.library", version.ref = "androidGradleVersion" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+
+[bundles]
+compose-bundle-ui = ["compose-ui", "compose-material", "compose-tooling-preview"]
+network = ["okhttp3", "retrofit", "interceptor", "moshi-converter"]

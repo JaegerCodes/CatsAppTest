@@ -1,0 +1,91 @@
+# Built application files
+*.apk
+*.ap_
+
+# Files for the Dalvik VM
+*.dex
+
+# Compiled Kotlin files
+*.class
+
+# Compiled Java files
+*.java
+
+# Compiled XML files
+*.xml
+
+# Generated files
+bin/
+gen/
+
+# Gradle-specific files
+.gradle/
+build/
+captures/
+
+# Local configuration files (replace YOUR_LOCAL_FILE with the actual filename)
+# Uncomment the line below if you have a local configuration file that shouldn't be committed
+# YOUR_LOCAL_FILE.properties
+
+# Android Studio configuration files
+.idea/
+
+# Keystore files
+*.jks
+
+# Proguard files
+proguard-rules.pro
+
+# Log files
+*.log
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# CMake build output
+cmake/
+
+# Android Studio generated JSON files
+*.json
+
+# Thumbnails
+*.thumb/
+
+# AVD configuration files
+*.ini
+
+# Android Studio profiling files
+*.hprof
+
+# Android Studio captures folder
+captures/
+
+# Firebase test lab files
+test-lab-*.xml
+
+# Google Services (e.g. google-services.json)
+google-services.json
+
+# Gradle wrapper properties file
+gradle-wrapper.properties
+
+# Local configuration file (e.g. sdk path, etc)
+local.properties
+
+# Crashlytics configuration file (if using Fabric)
+fabric.properties
+
+# NDK build output
+obj/
+
+# Kotlin-specific
+*.kotlin_module
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+# Google Play services configuration file
+google-play-services.json
+
+# Build cache (Recommended to include if using Gradle's build cache)
+# .gradle/build-cache/
