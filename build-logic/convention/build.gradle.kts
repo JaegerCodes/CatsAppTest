@@ -30,6 +30,16 @@ gradlePlugin {
             implementationClass = "AndroidLibraryConventionPlugin"
         }
 
+        register("androidHilt") {
+            id = "platzi.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
+
+        register("androidRoom") {
+            id = "platzi.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
+        }
+
         register("androidApplicationJacoco") {
             id = "platzi.android.jacoco"
             implementationClass = "AndroidApplicationJacocoConventionPlugin"

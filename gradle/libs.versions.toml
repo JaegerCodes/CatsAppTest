@@ -1,6 +1,6 @@
 [versions]
 # Android
-androidxCoreKtxVersion = "1.9.0"
+androidxCoreKtxVersion = "1.7.0"
 lifecycleRumtimeKtxVersion = "2.5.1"
 
 # Android Compose
@@ -10,7 +10,7 @@ activityComposeVersion = "1.6.1"
 navigationComposeVersion = "2.5.3"
 
 # Gradle plugins
-androidGradleVersion = "8.0.0"
+androidGradleVersion = "7.3.1"
 kotlinVersion = "1.8.20"
 detektVersion = "1.22.0"
 
@@ -28,6 +28,11 @@ jacocoVersion = "0.8.9"
 firebaseVersion = "4.3.13"
 firebaseBomVersion = "31.1.1"
 
+# Room
+roomVersion = "2.5.0"
+
+# Hilt
+hiltVersion = "2.47"
 
 [libraries]
 # Android
@@ -62,12 +67,23 @@ firebase = { module = "com.google.gms:google-services", version.ref = "firebaseV
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics-ktx" }
 
+# Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltVersion" }
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
+hilt-ext-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltVersion" }
+
+# Room
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+room-paging = { module = "androidx.room:room-paging", version.ref = "roomVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradleVersion" }
 android-library = { id = "com.android.library", version.ref = "androidGradleVersion" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
-
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 
 [bundles]
 compose-bundle-ui = ["compose-ui", "compose-material", "compose-tooling-preview"]
