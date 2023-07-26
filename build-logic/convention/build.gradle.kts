@@ -3,13 +3,14 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
     compileOnly(libs.android.gradle.plugin)
     compileOnly(libs.kotlin.gradle.plugin)
+    compileOnly(libs.detekt.gradle.plugin)
 }
 
 gradlePlugin {
@@ -24,19 +25,9 @@ gradlePlugin {
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
 
-        register("androidLibraryCompose") {
-            id = "platzi.library.compose"
-            implementationClass = "AndroidLibraryComposeConventionPlugin"
-        }
-
         register("androidLibrary") {
             id = "platzi.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
-        }
-
-        register("androidFeature") {
-            id = "platzi.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
         }
 
         register("androidApplicationJacoco") {
@@ -49,9 +40,14 @@ gradlePlugin {
             implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
 
-        register("androidLibraryHilt") {
-            id = "platzi.library.hilt"
-            implementationClass = "AndroidLibraryHiltConventionPlugin"
+        register("releaseNotes") {
+            id  = "platzi.release.notes"
+            implementationClass = "ReleaseNotesConventionPlugin"
+        }
+
+        register("detekt") {
+            id = "platzi.detekt"
+            implementationClass = "DetektConventionPlugin"
         }
     }
 }

@@ -6,20 +6,9 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
-/**
- * Configures the Kotlin Android settings for the given project using the specified
- * CommonExtension instance.
- *
- * This function applies the required Kotlin Android configurations for the project,
- * including setting the compileSdk version, minSdk version, testInstrumentationRunner,
- * vectorDrawables support, Java and Kotlin source/target compatibility, and packaging options.
- *
- * @param commonExtension The CommonExtension instance (either BaseExtension or
- *                        LibraryExtension) used to configure the Android project.
- */
 internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *>) {
     commonExtension.apply {
-        compileSdk = 33
+        compileSdk = 34
 
         defaultConfig {
             minSdk = 24
@@ -47,14 +36,6 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
     }
 }
 
-/**
- * Configures the Kotlin JVM options for the given CommonExtension instance.
- *
- * This function should be used within the scope of a CommonExtension instance (either
- * BaseExtension or LibraryExtension) to configure the Kotlin JVM options.
- *
- * @param block The configuration block for the KotlinJvmOptions.
- */
 private fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
     (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

@@ -74,9 +74,29 @@ private val coverageExclusions = listOf(
     "**/*JsonAdapter.*",
 )
 
-internal fun Project.configureJacoco(
+internal fun Project.configureModuleJacoco(
     androidComponentsExtension: AndroidComponentsExtension<*, *, *>
 ) {
+    configureJacoco()
+
+    androidComponentsExtension.onVariants { variant ->
+        val jacocoRulesFile = FileReader("${rootProject.projectDir}/gradle/coverage-rules.json")
+        val jacocoRules = Gson().fromJson<JacocoRules>(JsonReader(jacocoRulesFile), JacocoRules::class.java)
+
+        if (variant.buildType == "debug") {
+            val variantName = if (variant.flavorName.isNullOrEmpty()) "debug" else "${variant.flavorName}Debug"
+
+            createCoverageTask(
+                "test${variant.flavorName?.capitalized() ?: ""}DebugUnitTest",
+                variantName,
+                variant.flavorName ?: "",
+                jacocoRules
+            )
+        }
+    }
+}
+
+private fun Project.configureJacoco() {
     val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
     configure<JacocoPluginExtension> {
@@ -87,22 +107,6 @@ internal fun Project.configureJacoco(
         configure<JacocoTaskExtension> {
             isIncludeNoLocationClasses = true
             excludes = listOf("jdk.internal.*")
-        }
-    }
-
-    androidComponentsExtension.onVariants { variant ->
-        val jacocoRulesFile = FileReader("${rootProject.projectDir}/gradle/coverage-rules.json")
-        val jacocoRules = Gson().fromJson<JacocoRules>(JsonReader(jacocoRulesFile), JacocoRules::class.java)
-
-        if (variant.buildType == "debug" && jacocoRules.ignore.contains(name).not()) {
-            val variantName = if (variant.flavorName.isNullOrEmpty()) "debug" else "${variant.flavorName}Debug"
-
-            createCoverageTask(
-                "test${variant.flavorName?.capitalized() ?: ""}DebugUnitTest",
-                variantName,
-                variant.flavorName ?: "",
-                jacocoRules
-            )
         }
     }
 }
@@ -116,6 +120,7 @@ private fun Project.createCoverageTask(testTaskName: String, variantName: String
 
         reports {
             html.required.set(true)
+            xml.required.set(true)
         }
 
         classDirectories.setFrom(files(
@@ -130,9 +135,14 @@ private fun Project.createCoverageTask(testTaskName: String, variantName: String
             "$projectDir/src/$variantName/kotlin"
         ))
 
-        executionData.setFrom(file("$buildDir/jacoco/$testTaskName.exec"))
+        executionData.setFrom(files(
+            "$buildDir/jacoco/$testTaskName.exec",
+            "$buildDir/outputs/unit_test_code_coverage/debugUnitTest/$testTaskName.exec"
+        ))
 
         doLast {
+            println(variantName)
+            println(flavorName)
             println(File("$buildDir/reports/jacoco/jacoco${flavorName.capitalized()}Coverage/html/index.html"))
         }
     }
@@ -171,7 +181,10 @@ private fun Project.createCoverageTask(testTaskName: String, variantName: String
             "$projectDir/src/$variantName/kotlin"
         ))
 
-        executionData.setFrom(file("$buildDir/jacoco/$testTaskName.exec"))
+        executionData.setFrom(files(
+            "$buildDir/jacoco/$testTaskName.exec",
+            "$buildDir/outputs/unit_test_code_coverage/debugUnitTest/$testTaskName.exec"
+        ))
     }
 }
 

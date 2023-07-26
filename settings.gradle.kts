@@ -1,9 +1,9 @@
 pluginManagement {
     includeBuild("build-logic")
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -15,10 +15,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Random Cats"
 include(":app")
-include(":core:testing")
-include(":core:network")
-include(":core:common")
-include(":core:designsystem")
-include(":feature-catshome:catshome-data")
-include(":feature-catshome:catshome-domain")
-include(":feature-catshome:catshome-presentation")

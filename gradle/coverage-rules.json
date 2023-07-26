@@ -1,0 +1,25 @@
+{
+  "branches": {
+    "threshold": 0.5,
+    "modules" : [
+      {
+        "module": "app",
+        "reason": "This override is set to capture coverage values at 2022-12-26",
+        "threshold": "0.55"
+      }
+    ]
+  },
+  "instructions": {
+    "threshold": 0.6,
+    "modules": [
+      {
+        "module ": "app",
+        "reason": "This override is set to capture coverage values at 2022-12-26",
+        "threshold": "0.7"
+      }
+    ]
+  },
+  "ignore": [
+    "testing"
+  ]
+}

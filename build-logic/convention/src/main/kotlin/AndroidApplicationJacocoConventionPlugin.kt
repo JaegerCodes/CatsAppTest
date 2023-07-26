@@ -1,5 +1,5 @@
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.platzi.randomcats.configureJacoco
+import com.platzi.randomcats.configureModuleJacoco
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
@@ -11,7 +11,7 @@ class AndroidApplicationJacocoConventionPlugin : Plugin<Project> {
             pluginManager.apply("org.gradle.jacoco")
 
             val extension = extensions.getByType<ApplicationAndroidComponentsExtension>()
-            configureJacoco(extension)
+            configureModuleJacoco(extension)
         }
     }
 }
