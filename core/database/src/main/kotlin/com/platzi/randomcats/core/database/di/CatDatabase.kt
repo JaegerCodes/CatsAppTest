@@ -1,4 +1,4 @@
-package com.platzi.randomcats.core.database
+package com.platzi.randomcats.core.database.di
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
