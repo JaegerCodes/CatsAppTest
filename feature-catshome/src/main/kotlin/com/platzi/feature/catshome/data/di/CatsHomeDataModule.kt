@@ -26,22 +26,7 @@ import javax.inject.Singleton
 @OptIn(ExperimentalPagingApi::class)
 @InstallIn(SingletonComponent::class)
 class CatsHomeDataModule {
-    @Provides
-    @Singleton
-    fun provideMoshi(): Moshi = Moshi.Builder()
-        .add(DateMoshiAdapter())
-        .add(DefaultIfNullFactory())
-        .add(KotlinJsonAdapterFactory())
-        .build()
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .readTimeout(10, TimeUnit.SECONDS)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(AuthInterceptor("live_mtICrfeaEKViMcZiRxSaFxFAZk9jxri1FB71pALNy1USFrR97qmDjLMTReFiEG0y"))
-            .build()
-    }
+
     @Provides
     @Singleton
     fun provideCatsApi(client: OkHttpClient, moshi: Moshi): CatsApi {

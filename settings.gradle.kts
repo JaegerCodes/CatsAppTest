@@ -17,3 +17,4 @@ rootProject.name = "Random Cats"
 include(":app")
 include(":core:database")
 include(":feature-catshome")
+include(":core:network")

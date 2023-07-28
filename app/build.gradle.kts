@@ -30,8 +30,10 @@ dependencies {
     implementation(libs.compose.activity)
     implementation(libs.compose.navigation)
 
-    implementation(project(":feature-catshome"))
-
     implementation(libs.paging.compose)
     implementation(libs.hilt.ext.navigation)
+
+    implementation(project(":core:network"))
+    implementation(project(":feature-catshome"))
+
 }

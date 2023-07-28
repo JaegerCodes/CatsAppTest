@@ -17,7 +17,6 @@ dependencies {
 
     implementation(libs.okhttp3)
     implementation(libs.moshi)
-    implementation(libs.moshi.converter)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)
     implementation(libs.paging.runtime)
