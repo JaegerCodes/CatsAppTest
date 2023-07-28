@@ -2,6 +2,7 @@ plugins {
     id("platzi.android.application")
     id("platzi.android.compose")
     id("platzi.android.jacoco")
+    id("platzi.android.hilt")
 }
 
 android {
@@ -30,4 +31,7 @@ dependencies {
     implementation(libs.compose.navigation)
 
     implementation(project(":feature-catshome"))
+
+    implementation(libs.paging.compose)
+    implementation(libs.hilt.ext.navigation)
 }

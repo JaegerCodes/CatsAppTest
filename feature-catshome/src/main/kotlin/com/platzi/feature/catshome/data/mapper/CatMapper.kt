@@ -13,7 +13,7 @@ fun CatsDto.toCatEntity(): CatEntity {
     )
 }
 
-fun CatEntity.toCatDomain(): Cat {
+fun CatEntity.toCat(): Cat {
     return Cat(
         index = index,
         id = id,

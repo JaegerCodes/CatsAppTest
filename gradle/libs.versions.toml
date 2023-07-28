@@ -108,6 +108,7 @@ paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pag
 # Retrofit
 okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp3-version" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit-version" }
+retrofit-converter = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit-version" }
 interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp3-version" }
 moshi-converter = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "moshi-converter-version" }
 
