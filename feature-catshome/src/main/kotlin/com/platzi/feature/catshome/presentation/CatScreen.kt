@@ -1,17 +1,19 @@
 package com.platzi.feature.catshome.presentation
 
-import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -22,30 +24,23 @@ import com.platzi.feature.catshome.domain.Cat
 fun CatScreen(
     cats: LazyPagingItems<Cat>
 ) {
-    val context = LocalContext.current
-    LaunchedEffect(key1 = cats.loadState) {
-        if(cats.loadState.refresh is LoadState.Error) {
-            Toast.makeText(
-                context,
-                "Error: " + (cats.loadState.refresh as LoadState.Error).error.message,
-                Toast.LENGTH_LONG
-            ).show()
-        }
-    }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        if(cats.loadState.refresh is LoadState.Loading) {
+    Box(modifier = Modifier.fillMaxSize().background(Color(0xFF0F0F18))) {
+        if (cats.loadState.refresh is LoadState.Loading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                item {
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
                 items(cats) { cat ->
-                    if(cat != null) {
+                    if (cat != null) {
                         CatItem(
                             cat = cat,
                             modifier = Modifier.fillMaxWidth()
@@ -53,7 +48,7 @@ fun CatScreen(
                     }
                 }
                 item {
-                    if(cats.loadState.append is LoadState.Loading) {
+                    if (cats.loadState.append is LoadState.Loading) {
                         CircularProgressIndicator()
                     }
                 }
