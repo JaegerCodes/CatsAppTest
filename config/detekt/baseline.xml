@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>LongMethod:Jacoco.kt$private fun Project.createCoverageTask(testTaskName: String, variantName: String, flavorName: String, jacocoRules: JacocoRules)</ID>
+    <ID>MagicNumber:AndroidApplicationConventionPlugin.kt$AndroidApplicationConventionPlugin$34</ID>
+    <ID>MagicNumber:CatItem.kt$3f</ID>
+    <ID>MagicNumber:KotlinAndroid.kt$24</ID>
+    <ID>MagicNumber:KotlinAndroid.kt$34</ID>
+    <ID>MagicNumber:NetworkModule.kt$NetworkModule$10</ID>
+    <ID>MatchingDeclarationName:CatApi.kt$CatsApi</ID>
+    <ID>MaxLineLength:AndroidApplicationConventionPlugin.kt$AndroidApplicationConventionPlugin$versionName = "${versionProperties["MAJOR"]}.${versionProperties["MINOR"]}.${versionProperties["PATCH"]}"</ID>
+    <ID>MaxLineLength:DetektConventionPlugin.kt$DetektConventionPlugin$output.set(rootProject.layout.buildDirectory.file("reports/detekt/merge.xml")) // or "reports/detekt/merge.sarif"</ID>
+    <ID>MaxLineLength:Jacoco.kt$jacocoRules.instructions.modules.find { it.module == projectName }?.threshold ?: jacocoRules.instructions.threshold</ID>
+    <ID>MaxLineLength:Jacoco.kt$private</ID>
+    <ID>NewLineAtEndOfFile:AndroidApplicationComposeConventionPlugin.kt$.AndroidApplicationComposeConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidApplicationConventionPlugin.kt$.AndroidApplicationConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidApplicationJacocoConventionPlugin.kt$.AndroidApplicationJacocoConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidCompose.kt$com.platzi.randomcats.AndroidCompose.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidHiltConventionPlugin.kt$.AndroidHiltConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidLibraryConventionPlugin.kt$.AndroidLibraryConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidLibraryJacocoConventionPlugin.kt$.AndroidLibraryJacocoConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AndroidRoomConventionPlugin.kt$.AndroidRoomConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:AuthInterceptor.kt$com.platzi.randomcats.core.network.interceptor.AuthInterceptor.kt</ID>
+    <ID>NewLineAtEndOfFile:CatApi.kt$com.platzi.feature.catshome.data.remote.CatApi.kt</ID>
+    <ID>NewLineAtEndOfFile:CatDao.kt$com.platzi.randomcats.core.database.dao.CatDao.kt</ID>
+    <ID>NewLineAtEndOfFile:CatEntity.kt$com.platzi.randomcats.core.database.model.CatEntity.kt</ID>
+    <ID>NewLineAtEndOfFile:CatRemoteMediator.kt$com.platzi.feature.catshome.data.remote.CatRemoteMediator.kt</ID>
+    <ID>NewLineAtEndOfFile:CatScreen.kt$com.platzi.feature.catshome.presentation.CatScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:CatViewModel.kt$com.platzi.feature.catshome.presentation.CatViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:CatsDto.kt$com.platzi.feature.catshome.data.remote.CatsDto.kt</ID>
+    <ID>NewLineAtEndOfFile:CatsHomeDataModule.kt$com.platzi.feature.catshome.data.di.CatsHomeDataModule.kt</ID>
+    <ID>NewLineAtEndOfFile:DateMoshiAdapter.kt$com.platzi.feature.catshome.data.moshi.DateMoshiAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:DateMoshiAdapter.kt$com.platzi.randomcats.core.network.moshi.DateMoshiAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:DefaultIfNull.kt$com.platzi.feature.catshome.data.moshi.DefaultIfNull.kt</ID>
+    <ID>NewLineAtEndOfFile:DefaultIfNull.kt$com.platzi.randomcats.core.network.moshi.DefaultIfNull.kt</ID>
+    <ID>NewLineAtEndOfFile:DefaultIfNullFactory.kt$com.platzi.feature.catshome.data.moshi.DefaultIfNullFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:DefaultIfNullFactory.kt$com.platzi.randomcats.core.network.moshi.DefaultIfNullFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:DetektConventionPlugin.kt$.DetektConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.platzi.feature.catshome.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.platzi.randomcats.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleInstrumentedTest.kt$com.platzi.randomcats.core.network.ExampleInstrumentedTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.platzi.feature.catshome.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.platzi.randomcats.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.platzi.randomcats.core.network.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:JacocoRules.kt$com.platzi.randomcats.JacocoRules.kt</ID>
+    <ID>NewLineAtEndOfFile:KotlinAndroid.kt$com.platzi.randomcats.KotlinAndroid.kt</ID>
+    <ID>NewLineAtEndOfFile:PlatziApp.kt$com.platzi.randomcats.PlatziApp.kt</ID>
+    <ID>NewLineAtEndOfFile:ReleaseNotesConventionPlugin.kt$.ReleaseNotesConventionPlugin.kt</ID>
+    <ID>NewLineAtEndOfFile:build.gradle.kts$.build.gradle.kts</ID>
+    <ID>NewLineAtEndOfFile:settings.gradle.kts$.settings.gradle.kts</ID>
+    <ID>WildcardImport:CatItem.kt$import androidx.compose.foundation.layout.*</ID>
+    <ID>WildcardImport:DefaultIfNullFactory.kt$import com.squareup.moshi.*</ID>
+    <ID>WildcardImport:ExampleInstrumentedTest.kt$import org.junit.Assert.*</ID>
+    <ID>WildcardImport:ExampleUnitTest.kt$import org.junit.Assert.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
