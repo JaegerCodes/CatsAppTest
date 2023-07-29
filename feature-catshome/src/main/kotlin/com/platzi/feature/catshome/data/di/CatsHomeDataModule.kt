@@ -7,6 +7,7 @@ import com.platzi.feature.catshome.data.remote.CatRemoteMediator
 import com.platzi.feature.catshome.data.remote.CatsApi
 import com.platzi.randomcats.core.database.di.CatDatabase
 import com.platzi.randomcats.core.database.model.CatEntity
+import com.platzi.randomcats.core.network.config.NetworkConfig
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -24,9 +25,9 @@ class CatsHomeDataModule {
 
     @Provides
     @Singleton
-    fun provideCatsApi(client: OkHttpClient, moshi: Moshi): CatsApi {
+    fun provideCatsApi(client: OkHttpClient, moshi: Moshi, networkConfig: NetworkConfig): CatsApi {
         return Retrofit.Builder()
-            .baseUrl("https://api.thecatapi.com/v1/")
+            .baseUrl("${networkConfig.url}/${networkConfig.version}/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(client)
             .build()

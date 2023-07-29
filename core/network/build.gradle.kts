@@ -9,6 +9,8 @@ android {
 }
 
 dependencies {
-    implementation(libs.okhttp3)
-    implementation(libs.moshi)
+    api(libs.okhttp3)
+    api(libs.moshi)
+    api(libs.retrofit)
+    api(libs.retrofit.converter)
 }

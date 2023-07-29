@@ -14,11 +14,8 @@ android {
 dependencies {
 
     implementation(project(":core:database"))
+    implementation(project(":core:network"))
 
-    implementation(libs.okhttp3)
-    implementation(libs.moshi)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter)
     implementation(libs.paging.runtime)
     implementation(libs.hilt.ext.navigation)
 

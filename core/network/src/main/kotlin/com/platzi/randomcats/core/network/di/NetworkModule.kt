@@ -1,5 +1,6 @@
 package com.platzi.randomcats.core.network.di
 
+import com.platzi.randomcats.core.network.config.NetworkConfig
 import com.platzi.randomcats.core.network.interceptor.AuthInterceptor
 import com.platzi.randomcats.core.network.moshi.DateMoshiAdapter
 import com.platzi.randomcats.core.network.moshi.DefaultIfNullFactory
@@ -25,11 +26,11 @@ object NetworkModule {
         .build()
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(networkConfig: NetworkConfig): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(AuthInterceptor("live_mtICrfeaEKViMcZiRxSaFxFAZk9jxri1FB71pALNy1USFrR97qmDjLMTReFiEG0y"))
+            .addInterceptor(AuthInterceptor(networkConfig.apiKey))
             .build()
     }
 }

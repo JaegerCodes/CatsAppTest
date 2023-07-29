@@ -10,6 +10,9 @@ android {
 
     defaultConfig {
         applicationId = "com.platzi.randomcats"
+        buildConfigField("String", "CATS_URL", "\"https://api.thecatapi.com\"")
+        buildConfigField("String", "CATS_VERSION", "\"v1\"")
+        buildConfigField("String", "CATS_KEY", "\"live_mtICrfeaEKViMcZiRxSaFxFAZk9jxri1FB71pALNy1USFrR97qmDjLMTReFiEG0y\"")
     }
 
     buildTypes {
