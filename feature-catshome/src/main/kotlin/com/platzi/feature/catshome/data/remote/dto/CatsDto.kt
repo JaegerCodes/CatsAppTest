@@ -1,4 +1,4 @@
-package com.platzi.feature.catshome.data.remote
+package com.platzi.feature.catshome.data.remote.dto
 
 data class CatsDto(
     val id: String,

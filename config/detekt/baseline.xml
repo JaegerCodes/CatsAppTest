@@ -28,7 +28,7 @@
     <ID>NewLineAtEndOfFile:CatRemoteMediator.kt$com.platzi.feature.catshome.data.remote.CatRemoteMediator.kt</ID>
     <ID>NewLineAtEndOfFile:CatScreen.kt$com.platzi.feature.catshome.presentation.CatScreen.kt</ID>
     <ID>NewLineAtEndOfFile:CatViewModel.kt$com.platzi.feature.catshome.presentation.CatViewModel.kt</ID>
-    <ID>NewLineAtEndOfFile:CatsDto.kt$com.platzi.feature.catshome.data.remote.CatsDto.kt</ID>
+    <ID>NewLineAtEndOfFile:CatsDto.kt$com.platzi.feature.catshome.data.remote.dto.CatsDto.kt</ID>
     <ID>NewLineAtEndOfFile:CatsHomeDataModule.kt$com.platzi.feature.catshome.data.di.CatsHomeDataModule.kt</ID>
     <ID>NewLineAtEndOfFile:DateMoshiAdapter.kt$com.platzi.feature.catshome.data.moshi.DateMoshiAdapter.kt</ID>
     <ID>NewLineAtEndOfFile:DateMoshiAdapter.kt$com.platzi.randomcats.core.network.moshi.DateMoshiAdapter.kt</ID>
