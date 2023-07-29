@@ -8,10 +8,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.platzi.feature.catshome.presentation.CatScreen
 import dagger.hilt.android.AndroidEntryPoint
-import com.platzi.feature.catshome.presentation.CatViewModel
+import com.platzi.feature.catshome.presentation.home.CatViewModel
+import com.platzi.feature.catshome.presentation.home.HomeScreen
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +25,10 @@ class MainActivity : ComponentActivity() {
             ) {
                 val viewModel = hiltViewModel<CatViewModel>()
                 val cats = viewModel.catPagingFlow.collectAsLazyPagingItems()
-                CatScreen(cats = cats)
+                HomeScreen(
+                    cats = cats,
+                    navigationController = rememberNavController()
+                )
             }
         }
     }

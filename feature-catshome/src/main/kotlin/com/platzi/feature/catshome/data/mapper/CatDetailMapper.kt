@@ -1,8 +1,8 @@
 package com.platzi.feature.catshome.data.mapper
 
 import com.platzi.feature.catshome.data.remote.dto.CatDetailDto
-import com.platzi.feature.catshome.domain.Breed
-import com.platzi.feature.catshome.domain.CatDetail
+import com.platzi.feature.catshome.domain.model.Breed
+import com.platzi.feature.catshome.domain.model.CatDetail
 
 fun CatDetailDto.toCatDetail() = CatDetail(
     id = id,

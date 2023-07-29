@@ -5,6 +5,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.platzi.feature.catshome.data.remote.CatRemoteMediator
 import com.platzi.feature.catshome.data.remote.CatsApi
+import com.platzi.feature.catshome.data.repository.CatDetailRepositoryImpl
+import com.platzi.feature.catshome.domain.repository.CatDetailRepository
 import com.platzi.randomcats.core.database.di.CatDatabase
 import com.platzi.randomcats.core.database.model.CatEntity
 import com.platzi.randomcats.core.network.config.NetworkConfig
@@ -21,7 +23,7 @@ import javax.inject.Singleton
 @Module
 @OptIn(ExperimentalPagingApi::class)
 @InstallIn(SingletonComponent::class)
-class CatsHomeDataModule {
+class DataModule {
 
     @Provides
     @Singleton
@@ -47,5 +49,11 @@ class CatsHomeDataModule {
                 catDb.catDao.pagingSource()
             }
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideCatDetailRepository(catApi: CatsApi): CatDetailRepository {
+        return CatDetailRepositoryImpl(catApi)
     }
 }

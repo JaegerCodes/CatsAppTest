@@ -1,4 +1,4 @@
-package com.platzi.feature.catshome.presentation
+package com.platzi.feature.catshome.presentation.cats
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,13 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
-import com.platzi.feature.catshome.domain.Cat
+import com.platzi.feature.catshome.domain.model.Cat
 
 @Composable
-fun CatScreen(
+fun CatsScreen(
     cats: LazyPagingItems<Cat>
 ) {
-
     Box(modifier = Modifier.fillMaxSize().background(Color(0xFF0F0F18))) {
         if (cats.loadState.refresh is LoadState.Loading) {
             CircularProgressIndicator(

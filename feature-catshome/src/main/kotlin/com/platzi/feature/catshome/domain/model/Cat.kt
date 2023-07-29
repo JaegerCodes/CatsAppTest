@@ -1,4 +1,4 @@
-package com.platzi.feature.catshome.domain
+package com.platzi.feature.catshome.domain.model
 
 data class Cat(
     val index: Int? = null,
