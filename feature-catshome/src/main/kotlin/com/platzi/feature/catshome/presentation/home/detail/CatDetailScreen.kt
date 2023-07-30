@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
@@ -22,37 +21,42 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
 import com.platzi.feature.catshome.domain.model.Breed
 import com.platzi.feature.catshome.domain.model.CatDetail
-import com.platzi.feature.catshome.presentation.home.CatsState
+import com.platzi.feature.catshome.presentation.home.CatViewModel
 
 @Composable
 fun CatDetailScreen(
-    catsState: CatsState,
-    loadCatDetail: () -> Unit,
+    viewModel: CatViewModel,
     onBackClicked: () -> Unit
 ) {
+    val catDetailState by viewModel.uiState.collectAsState()
 
-    when (catsState) {
-        is CatsState.Loading -> {
-            CircularProgressIndicator()
-            loadCatDetail()
-        }
-        is CatsState.Detail -> {
+    when (catDetailState) {
+        is CatDetailState.Detail -> {
             Column(modifier = Modifier.fillMaxSize()) {
                 CatDetailHeader(onBackClicked)
-                CatDetailContent(catsState.cat)
+                CatDetailContent((catDetailState as CatDetailState.Detail).cat)
             }
         }
-        is CatsState.Error -> {
-            Box(modifier = Modifier.fillMaxSize())
+
+        is CatDetailState.Loading, CatDetailState.Idle -> {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
         }
     }
 }
@@ -71,7 +75,9 @@ fun CatDetailHeader(onBackClicked: () -> Unit) {
 
 @Composable
 fun CatDetailContent(catData: CatDetail) {
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(Color(0xFF0F0F18))) {
         AsyncImage(
             model = catData.url,
             contentDescription = "Cat Image",

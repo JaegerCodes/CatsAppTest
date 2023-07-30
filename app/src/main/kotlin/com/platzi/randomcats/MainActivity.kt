@@ -25,15 +25,16 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colors.background
             ) {
-                val viewModel = hiltViewModel<CatViewModel>()
+                val viewModel: CatViewModel = hiltViewModel()
                 val cats = viewModel.catPagingFlow.collectAsLazyPagingItems()
                 val catsState by viewModel.uiState.collectAsState()
 
+                val navController = rememberNavController()
                 HomeScreen(
                     cats = cats,
-                    catsState = catsState,
-                    loadCatDetail = viewModel::fetchCatDetail,
-                    navigationController = rememberNavController()
+                    catDetailState = catsState,
+                    navigationController = navController,
+                    viewModel = viewModel
                 )
             }
         }

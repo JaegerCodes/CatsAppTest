@@ -7,7 +7,7 @@ import androidx.paging.map
 import com.platzi.feature.catshome.data.mapper.toCat
 import com.platzi.feature.catshome.domain.usecase.CatsUseCases
 import com.platzi.feature.catshome.domain.usecase.GetCatDetail
-import com.platzi.feature.catshome.presentation.home.CatsState
+import com.platzi.feature.catshome.presentation.home.detail.CatDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -21,7 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CatViewModel @Inject constructor(
     private val useCase: CatsUseCases
-): ViewModel() {
+) : ViewModel() {
 
     val catPagingFlow = useCase.getPagerCats()
         .flow
@@ -30,28 +30,28 @@ class CatViewModel @Inject constructor(
         }
         .cachedIn(viewModelScope)
 
-    private val _uiState: MutableStateFlow<CatsState> = MutableStateFlow(CatsState.Loading)
-    val uiState: StateFlow<CatsState>
+    private val _uiState: MutableStateFlow<CatDetailState> = MutableStateFlow(CatDetailState.Idle)
+    val uiState: StateFlow<CatDetailState>
         get() = _uiState
-        .asStateFlow()
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000),
-            CatsState.Loading
-        )
+            .asStateFlow()
+            .stateIn(
+                viewModelScope,
+                SharingStarted.WhileSubscribed(5000),
+                CatDetailState.Loading
+            )
 
     fun fetchCatDetail(catId: String) {
         viewModelScope.launch {
-            _uiState.value = CatsState.Loading
+            _uiState.value = CatDetailState.Loading
             try {
                 useCase.getCatDetail(catId).collect { result ->
                     _uiState.value = when (result) {
-                        is GetCatDetail.Result.Error -> CatsState.Error
-                        is GetCatDetail.Result.Success -> CatsState.Detail(result.detail)
+                        is GetCatDetail.Result.Error -> CatDetailState.Idle
+                        is GetCatDetail.Result.Success -> CatDetailState.Detail(result.detail)
                     }
                 }
             } catch (e: Exception) {
-                _uiState.value = CatsState.Error
+                _uiState.value = CatDetailState.Idle
             }
         }
     }

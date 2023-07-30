@@ -15,25 +15,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.platzi.feature.catshome.domain.model.Cat
-import com.platzi.feature.catshome.presentation.route.HomeRoutes
+import com.platzi.feature.catshome.presentation.home.CatViewModel
+import com.platzi.feature.catshome.presentation.home.detail.CatDetailState
 
 @Composable
 fun CatsScreen(
-    cats: LazyPagingItems<Cat>, navController: NavHostController
+    cats: LazyPagingItems<Cat>,
+    viewModel: CatViewModel,
+    catDetailState: CatDetailState
 ) {
-    Box(modifier = Modifier.fillMaxSize().background(Color(0xFF0F0F18))) {
-        if (cats.loadState.refresh is LoadState.Loading) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF0F0F18))
+    ) {
+        if (
+            cats.loadState.refresh is LoadState.Loading ||
+            catDetailState is CatDetailState.Loading
+        ) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
             )
         } else {
             LazyColumn(
-                modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -46,7 +57,7 @@ fun CatsScreen(
                             cat = cat,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            navController.navigate(HomeRoutes.DetailScreen.createRoute(cat.id))
+                            viewModel.fetchCatDetail(cat.id)
                         }
                     }
                 }
