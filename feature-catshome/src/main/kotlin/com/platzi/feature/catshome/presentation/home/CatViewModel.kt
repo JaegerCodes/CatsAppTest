@@ -7,7 +7,7 @@ import androidx.paging.map
 import com.platzi.feature.catshome.data.mapper.toCat
 import com.platzi.feature.catshome.domain.usecase.CatsUseCases
 import com.platzi.feature.catshome.domain.usecase.GetCatDetail
-import com.platzi.feature.catshome.presentation.cats.CatsState
+import com.platzi.feature.catshome.presentation.home.CatsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -30,14 +30,14 @@ class CatViewModel @Inject constructor(
         }
         .cachedIn(viewModelScope)
 
-    private val _uiState: MutableStateFlow<CatsState> = MutableStateFlow(CatsState.Idle)
+    private val _uiState: MutableStateFlow<CatsState> = MutableStateFlow(CatsState.Loading)
     val uiState: StateFlow<CatsState>
         get() = _uiState
         .asStateFlow()
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5000),
-            CatsState.Idle
+            CatsState.Loading
         )
 
     fun fetchCatDetail(catId: String) {

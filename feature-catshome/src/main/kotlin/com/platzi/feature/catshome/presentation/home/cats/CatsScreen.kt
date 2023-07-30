@@ -1,4 +1,4 @@
-package com.platzi.feature.catshome.presentation.cats
+package com.platzi.feature.catshome.presentation.home.cats
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,14 +15,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.platzi.feature.catshome.domain.model.Cat
+import com.platzi.feature.catshome.presentation.route.HomeRoutes
 
 @Composable
 fun CatsScreen(
-    cats: LazyPagingItems<Cat>
+    cats: LazyPagingItems<Cat>, navController: NavHostController
 ) {
     Box(modifier = Modifier.fillMaxSize().background(Color(0xFF0F0F18))) {
         if (cats.loadState.refresh is LoadState.Loading) {
@@ -43,7 +45,9 @@ fun CatsScreen(
                         CatItem(
                             cat = cat,
                             modifier = Modifier.fillMaxWidth()
-                        )
+                        ) {
+                            navController.navigate(HomeRoutes.DetailScreen.createRoute(cat.id))
+                        }
                     }
                 }
                 item {

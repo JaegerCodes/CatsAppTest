@@ -1,4 +1,4 @@
-package com.platzi.feature.catshome.presentation.detail
+package com.platzi.feature.catshome.presentation.home.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -20,6 +22,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -28,15 +31,29 @@ import coil.compose.AsyncImage
 
 import com.platzi.feature.catshome.domain.model.Breed
 import com.platzi.feature.catshome.domain.model.CatDetail
-import com.platzi.feature.catshome.presentation.cats.CatsState
+import com.platzi.feature.catshome.presentation.home.CatsState
 
 @Composable
-fun CatDetailScreen(id: String, onBackClicked: () -> Unit) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        /*catDetail?.let {
-            CatDetailHeader(onBackClicked)
-            CatDetailContent(catDetail)
-        }*/
+fun CatDetailScreen(
+    catsState: CatsState,
+    loadCatDetail: () -> Unit,
+    onBackClicked: () -> Unit
+) {
+
+    when (catsState) {
+        is CatsState.Loading -> {
+            CircularProgressIndicator()
+            loadCatDetail()
+        }
+        is CatsState.Detail -> {
+            Column(modifier = Modifier.fillMaxSize()) {
+                CatDetailHeader(onBackClicked)
+                CatDetailContent(catsState.cat)
+            }
+        }
+        is CatsState.Error -> {
+            Box(modifier = Modifier.fillMaxSize())
+        }
     }
 }
 

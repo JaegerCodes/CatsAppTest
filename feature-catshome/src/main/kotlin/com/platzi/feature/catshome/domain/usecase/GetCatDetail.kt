@@ -11,8 +11,12 @@ class GetCatDetail(
         catId: String,
     ) = flow {
         repository.getCatDetail(catId).fold(
-            onSuccess = { data -> emit(Result.Success(data)) },
-            onFailure = { emit(Result.Error)}
+            onSuccess = {
+                data -> emit(Result.Success(data))
+            },
+            onFailure = {
+                emit(Result.Error)
+            }
         )
     }
 

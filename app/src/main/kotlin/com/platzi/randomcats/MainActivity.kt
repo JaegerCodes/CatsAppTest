@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
@@ -25,8 +27,12 @@ class MainActivity : ComponentActivity() {
             ) {
                 val viewModel = hiltViewModel<CatViewModel>()
                 val cats = viewModel.catPagingFlow.collectAsLazyPagingItems()
+                val catsState by viewModel.uiState.collectAsState()
+
                 HomeScreen(
                     cats = cats,
+                    catsState = catsState,
+                    loadCatDetail = viewModel::fetchCatDetail,
                     navigationController = rememberNavController()
                 )
             }

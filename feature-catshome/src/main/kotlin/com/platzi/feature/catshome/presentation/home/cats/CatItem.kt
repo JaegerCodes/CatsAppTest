@@ -1,6 +1,7 @@
-package com.platzi.feature.catshome.presentation.cats
+package com.platzi.feature.catshome.presentation.home.cats
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -21,13 +22,15 @@ import com.platzi.feature.catshome.domain.model.Cat
 @Composable
 fun CatItem(
     cat: Cat,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClickCatItem: () -> Unit
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
             .height(200.dp)
-            .background(Color(0xff0F0F0F)),
+            .background(Color(0xff0F0F0F))
+            .clickable { onClickCatItem() },
         shape = RoundedCornerShape(8.dp),
         elevation = 4.dp
     ) {
