@@ -64,7 +64,7 @@ fun CatDetailScreen(
 @Composable
 fun CatDetailHeader(onBackClicked: () -> Unit) {
     TopAppBar(
-        title = { Text("Cat Detail") },
+        title = { Text("About this cat") },
         navigationIcon = {
             IconButton(onClick = onBackClicked) {
                 Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -96,6 +96,7 @@ fun CardList(breeds: List<Breed>) {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
+            .clip(RoundedCornerShape(16.dp))
     ) {
         items(breeds) { breed ->
             CatCard(breed)

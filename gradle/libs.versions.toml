@@ -16,9 +16,14 @@ detektVersion = "1.22.0"
 
 # Testing
 junitVersion = "4.13.2"
+coroutineVersion = "1.6.1"
+mockkVersion = "1.13.2"
+mockwebserverVersion = "4.10.0"
+coreTestVersion = "2.1.0"
+coreTestKtxVersion = "1.4.0"
 
 # Android Testing
-androidxTestExtVersion = "1.1.4"
+junitExtVersion = "1.1.4"
 espressoVersion = "3.5.0"
 
 # Jacoco
@@ -73,11 +78,16 @@ kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-p
 detekt-gradle-plugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detektVersion" }
 
 # Testing
+core-ktx-test = { module = "androidx.test:core-ktx", version.ref = "coreTestKtxVersion" }
+core-test = { module = "androidx.arch.core:core-testing", version.ref = "coreTestVersion" }
 junit = { module = "junit:junit", version.ref = "junitVersion" }
+coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutineVersion" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
+mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "mockwebserverVersion" }
 
 # Android Testing
-androidx-test-ext = { module = "androidx.test.ext:junit", version.ref = "androidxTestExtVersion" }
-androidx-test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }
+junit-ext = { module = "androidx.test.ext:junit", version.ref = "junitExtVersion" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoVersion" }
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
 compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 

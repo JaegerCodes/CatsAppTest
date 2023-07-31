@@ -21,4 +21,17 @@ dependencies {
 
     implementation(libs.coil)
     implementation(libs.paging.compose)
+
+
+    // testing
+    testImplementation(libs.mockk)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockwebserver)
+
+    // AndroidX Test dependencies
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.espresso.core)
+
+    // kotlinx-coroutines-test for testing coroutines
+    testImplementation(libs.coroutine.test)
 }
